@@ -24,11 +24,11 @@ const numClassificationApi = async (req, res) => {
     const plain_text = await axios.get(`http://numbersapi.com/${number}`);
 
     const data = {
-      number: `${number}`,
-      is_prime: `${pro.isPrime(number)}`,
-      is_perfect: `${pro.isPerfect(number)}`,
+      number: +number,
+      is_prime: pro.isPrime(number),
+      is_perfect: pro.isPerfect(number),
       properties: [`${pro.property(number)}`],
-      digit_sum: `${pro.digit_sum(number)}`, // sum of its digits
+      digit_sum: pro.digit_sum(number), // sum of its digits
       fun_fact: `${plain_text.data}`,
     };
     // console.log(data);
