@@ -1,10 +1,4 @@
-const {
-  isPerfect,
-  isPrime,
-  digit_sum,
-  armstrong,
-  isEven,
-} = require("../utilis/maths");
+const { NumberClassification } = require("../utilis/maths");
 const axios = require("axios");
 
 const numClassificationApi = async (req, res) => {
@@ -17,32 +11,25 @@ const numClassificationApi = async (req, res) => {
       });
     }
 
-    const property = [];
+    // console.log(armstrong(number));
 
-    if (armstrong(n) && isEven(n)) {
-      property.push(["armstrong", "even"]);
-    } else if (armstrong(n) && !isEven(n)) {
-      property.push(["armstrong", "odd"]);
-    } else if (!armstrong(n) && !isEven(n)) {
-      property.push(["odd"]);
-    } else if (!armstrong(n) && isEven(n)) {
-      property.push(["even"]);
-    }
+    const pro = new NumberClassification();
+
     const plain_text = await axios.get(`http://numbersapi.com/${number}`);
 
     const data = {
       number: `${number}`,
-      is_prime: `${isPrime(number)}`,
-      is_perfect: `${isPerfect(number)}`,
-      properties: property,
-      digit_sum: `${digit_sum(number)}`, // sum of its digits
+      is_prime: `${pro.isPrime(number)}`,
+      is_perfect: `${pro.isPerfect(number)}`,
+      properties: `${pro.property(number)}`,
+      digit_sum: `${pro.digit_sum(number)}`, // sum of its digits
       fun_fact: `${plain_text.data}`,
     };
-    console.log(data);
+    // console.log(data);
     return res.status(200).json(data);
   } catch (error) {
     return res.status(500).json({
-      massage: `${error.details[0].message}`,
+      massage: `${error.details}`,
     });
   }
 };
