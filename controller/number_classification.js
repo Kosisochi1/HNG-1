@@ -21,7 +21,7 @@ const numClassificationApi = async (req, res) => {
       number: `${number}`,
       is_prime: `${pro.isPrime(number)}`,
       is_perfect: `${pro.isPerfect(number)}`,
-      properties: `${pro.property(number)}`,
+      properties: [`${pro.property(number)}`],
       digit_sum: `${pro.digit_sum(number)}`, // sum of its digits
       fun_fact: `${plain_text.data}`,
     };

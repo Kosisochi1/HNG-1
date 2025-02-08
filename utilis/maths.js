@@ -1,3 +1,5 @@
+const { json } = require("express");
+
 class NumberClassification {
   armstrong(n) {
     let value = n;
@@ -54,10 +56,10 @@ class NumberClassification {
 
   property(n) {
     if (this.armstrong(n) == true && this.isEven(n) == "Even") {
-      let properties = ["armstrong", "even"];
-      return;
+      const properties = ["armstrong", "even"];
+      return properties;
     } else if (this.armstrong(n) == true && this.isEven(n) == "Odd") {
-      let properties = ["armstrong", "odd"];
+      const properties = ["armstrong", "odd"];
       return properties;
     } else if (this.armstrong(n) == false && this.isEven(n) == "Even") {
       return ["even"];
