@@ -10,6 +10,12 @@ const numClassificationApi = async (req, res) => {
         error: true,
       });
     }
+    if (number < 0) {
+      return res.status(406).json({
+        number: "Nagetive Values",
+        error: true,
+      });
+    }
 
     // console.log(armstrong(number));
 
