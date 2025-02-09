@@ -34,7 +34,13 @@ app.get("/api/classify-number", async (req, res) => {
         fun_fact: "Zero",
       });
     }
-    if (typeof number !== "string" || isNaN(Number(number))) {
+    if (typeof number == "string") {
+      return res.status(403).json({
+        number: "alphanumeric",
+        error: true,
+      });
+    }
+    if (isNaN(Number(number))) {
       return res.status(403).json({
         number: "alphabet",
         error: true,
