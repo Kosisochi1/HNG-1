@@ -41,13 +41,6 @@ app.get("/api/classify-number", async (req, res) => {
       });
     }
 
-    if (!number.match(/^[0-9a-z]+$/)) {
-      return res.status(403).json({
-        number: "alphabet",
-        error: true,
-      });
-    }
-
     const math = new NumberClassification();
     let n1 = +number;
 
