@@ -42,7 +42,7 @@ app.get("/api/classify-number", async (req, res) => {
     }
     if (isNaN(Number(number))) {
       return res.status(403).json({
-        number: "alphabet",
+        number: "alphanumeric",
         error: true,
       });
     }
