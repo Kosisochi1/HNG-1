@@ -35,14 +35,10 @@ app.get("/api/classify-number", async (req, res) => {
       });
     }
     if (typeof number !== "string" || isNaN(Number(number))) {
-      return res.status(400).json({
+      return res.status(403).json({
         number: "alphabet",
         error: true,
       });
-    }
-
-    if (number < 0) {
-      return res.status(400).json({ number: "Negative Integer", error: true });
     }
 
     const math = new NumberClassification();
@@ -64,6 +60,10 @@ app.get("/api/classify-number", async (req, res) => {
       digit_sum: math.digit_sum(number), // sum of its digits
       fun_fact: fun_fat,
     };
+
+    if (number < 0) {
+      return res.status(200).json(data);
+    }
 
     res.status(200).json(data);
   } catch (error) {
