@@ -56,11 +56,9 @@ class NumberClassification {
 
   property(n) {
     if (this.armstrong(n) == true && this.isEven(n) == "Even") {
-      const properties = ["armstrong", "even"];
-      return properties;
+      return ["armstrong", "even"];
     } else if (this.armstrong(n) == true && this.isEven(n) == "Odd") {
-      const properties = ["armstrong", "odd"];
-      return properties;
+      return ["armstrong", "odd"];
     } else if (this.armstrong(n) == false && this.isEven(n) == "Even") {
       return ["even"];
     } else {

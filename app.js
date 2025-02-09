@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 // app.use("/", route);
 
-app.get("/", async (req, res) => {
+app.get("/api/classify-number", async (req, res) => {
   try {
     return res.status(200).json({ massage: "Welcome" });
   } catch (error) {
