@@ -28,19 +28,17 @@ const numClassificationApi = async (req, res) => {
     const pro = new NumberClassification();
 
     const plain_text = await axios.get(`http://numbersapi.com/${number}/math`);
-    let pr = [];
-    pr.push(`${pro.property(number)}`);
 
     const data = {
       number: +number,
       is_prime: pro.isPrime(number),
       is_perfect: pro.isPerfect(number),
-      properties: pr,
+      properties: [pro.property(number)],
       digit_sum: pro.digit_sum(number), // sum of its digits
       fun_fact: `${plain_text.data}`,
     };
     // console.log(data);
-    return res.status(200).json(data);
+    res.status(200).json(data);
   } catch (error) {
     return res.status(500).json({
       massage: `${error.details}`,
