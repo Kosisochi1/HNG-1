@@ -26,7 +26,12 @@ app.get("/api/classify-number", async (req, res) => {
 
     if (number == null || !number) {
       return res.status(200).json({
-        number: "empty",
+        number: 0,
+        is_prime: false,
+        is_perfect: false,
+        properties: "null",
+        digit_sum: 9,
+        fun_fact: "Zero",
       });
     }
     if (typeof number !== "string" || isNaN(Number(number))) {
