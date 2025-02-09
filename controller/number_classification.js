@@ -4,6 +4,12 @@ const axios = require("axios");
 const numClassificationApi = async (req, res) => {
   try {
     const { number } = req.query;
+
+    if (!number) {
+      return res.status(400).json({
+        massage: "Welcom to Number API",
+      });
+    }
     if (typeof number !== "string" || isNaN(Number(number))) {
       return res.status(400).json({
         number: "alphabet",
